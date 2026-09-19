@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website Profil Pribadi, CV & Portofolio Althof Rahmatullah - Mahasiswa Teknik Informatika, Institut Teknologi Sepuluh Nopember.">
+  <meta name="keywords" content="Althof Rahmatullah, Teknik Informatika, ITS, Figma, C, C++, Portfolio, CV">
+  <meta name="author" content="Althof Rahmatullah">
+  <title>Althof Rahmatullah | Personal Profile & CV</title>
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%238C6239'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' fill='%23FAF7F2' font-size='50' font-family='sans-serif' font-weight='bold'>AR</text></svg>">
+
+  <!-- Main Stylesheet (Pastel Palette: Dark Brown, Light Brown, Cream White) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER & NAVIGATION
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container navbar">
+      <!-- Navigation Menu: Home, About, Skills -->
+      <nav id="nav-menu" class="nav-menu" aria-label="Menu Utama">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+      </nav>
+
+      <!-- Action Buttons (Theme Switcher & Download CV) -->
+      <div class="nav-actions">
+        <!-- Light / Dark Mode Toggle (Pastel Palette) -->
+        <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Ganti Tema Gelap / Terang">
+          <!-- Sun Icon (Active in Dark Mode) -->
+          <svg class="sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon Icon (Active in Light Mode) -->
+          <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Download CV Button -->
+        <a href="cv/cv.pdf" download="CV-Althof-Rahmatullah.pdf" class="btn btn-outline btn-sm" title="Unduh Curriculum Vitae">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download CV</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobile-toggle-btn" class="mobile-toggle-btn" aria-label="Buka Menu Navigasi" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAIN CONTENT
+       ======================================================================== -->
+  <main>
+    
+    <!-- ======================================================================
+         SECTION 1: HERO SECTION
+         ====================================================================== -->
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <!-- Hero Information -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Institut Teknologi Sepuluh Nopember</span>
+          </div>
+
+          <p class="hero-greeting">Halo, Selamat Datang! Saya</p>
+          <h1 class="hero-name"><span class="gradient-text">Althof</span> Rahmatullah</h1>
+
+          <p class="hero-bio">
+            Mahasiswa Teknik Informatika yang berfokus pada teknologi komputer, sistem informasi, dan perancangan antarmuka visual kreatif dengan pendekatan yang terstruktur dan bertanggung jawab.
+          </p>
+
+          <!-- Call to Actions -->
+          <div class="hero-cta-group">
+            <a href="#about" class="btn btn-primary">
+              <span>Tentang Saya</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#skills" class="btn btn-secondary">
+              <span>Lihat Keahlian</span>
+            </a>
+            <a href="cv/cv.pdf" download="CV-Althof-Rahmatullah.pdf" class="btn btn-outline">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download CV</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Visual Profile Frame -->
+        <div class="hero-visual">
+          <div class="profile-card-wrapper">
+            <div class="profile-card-glow"></div>
+            <div class="profile-frame">
+              <div class="profile-image-box">
+                <img src="images/profile.jpg" alt="Foto Profil Althof Rahmatullah" width="400" height="400">
+              </div>
+            </div>
+            <!-- Floating Badge -->
+            <div class="profile-badge-floating">
+              <div class="badge-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="badge-text-primary">Teknik Informatika</div>
+                <div class="badge-text-sub">ITS Surabaya</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: ABOUT & IDENTITY SECTION
+         ====================================================================== -->
+    <section id="about" class="section section-alt">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header">
+          <span class="section-tag">Tentang Saya</span>
+          <h2 class="section-title">Dedikasi, Kreativitas &amp; Ketertarikan Teknologi</h2>
+          <p class="section-desc">Mengenal lebih dekat latar belakang, karakter kepribadian, serta profil mahasiswa.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Story Card with Exact Requested Text -->
+          <article class="about-story-card">
+            <h3 class="about-card-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4M12 8h.01"></path>
+              </svg>
+              <span>Profil Pribadi</span>
+            </h3>
+            <p class="about-story-text">
+              Saya adalah mahasiswa Teknik Informatika yang memiliki ketertarikan mendalam pada perkembangan teknologi komputer dan sistem informasi. Berbekal pengalaman sebagai staf divisi Desain dan Dekorasi di berbagai kepanitiaan, saya telah mengasah kemampuan dasar desain grafis serta kreativitas dalam menyampaikan informasi secara visual.
+            </p>
+            <p class="about-story-text">
+              Secara karakter, saya adalah pribadi yang fleksibel dan sangat bertanggung jawab terhadap setiap tugas yang diberikan. Meskipun cenderung pendiam, saya memiliki kemampuan komunikasi yang baik dan efektif dalam koordinasi tim.
+            </p>
+          </article>
+
+          <!-- Identity Card (Nama, NRP, Prodi, Institusi, Email) -->
+          <aside class="about-info-card">
+            <h3 class="about-card-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Identitas Mahasiswa</span>
+            </h3>
+
+            <div class="identity-list">
+              <div class="identity-row">
+                <span class="identity-label">Nama</span>
+                <span class="identity-value">Althof Rahmatullah</span>
+              </div>
+              <div class="identity-row">
+                <span class="identity-label">NRP</span>
+                <span class="identity-value">5025251204</span>
+              </div>
+              <div class="identity-row">
+                <span class="identity-label">Program Studi</span>
+                <span class="identity-value">S1 Teknik Informatika</span>
+              </div>
+              <div class="identity-row">
+                <span class="identity-label">Institusi</span>
+                <span class="identity-value">Institut Teknologi Sepuluh Nopember</span>
+              </div>
+              <div class="identity-row">
+                <span class="identity-label">Email</span>
+                <span class="identity-value">
+                  <a href="mailto:althof.rahmatullah@gmail.com">althof.rahmatullah@gmail.com</a>
+                </span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 3: SKILLSET SECTION (Figma, C, C++)
+         ====================================================================== -->
+    <section id="skills" class="section">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header">
+          <span class="section-tag">Skillset</span>
+          <h2 class="section-title">Keahlian &amp; Penguasaan Teknis</h2>
+          <p class="section-desc">Kompilasi kemampuan pemrograman sistem, perancangan antarmuka pengguna, dan kreativitas visual.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill 1: Figma -->
+          <div class="skill-card">
+            <div class="skill-header">
+              <h3 class="skill-name">Figma</h3>
+              <span class="skill-level-badge">Desain</span>
+            </div>
+            <p class="skill-desc">UI/UX prototyping, wireframing, dan desain antarmuka visual</p>
+          </div>
+
+          <!-- Skill 2: C Programming -->
+          <div class="skill-card">
+            <div class="skill-header">
+              <h3 class="skill-name">Bahasa Pemrograman C</h3>
+              <span class="skill-level-badge">Sistem</span>
+            </div>
+            <p class="skill-desc">Struktur algoritma, pointer, manajemen memori, dan pemrograman prosedural</p>
+          </div>
+
+          <!-- Skill 3: C++ Programming -->
+          <div class="skill-card">
+            <div class="skill-header">
+              <h3 class="skill-name">Bahasa Pemrograman C++</h3>
+              <span class="skill-level-badge">OOP</span>
+            </div>
+            <p class="skill-desc">Object-Oriented Programming (OOP), abstraksi data, dan Standard Template Library (STL)</p>
+          </div>
+
+          <!-- Skill 4: Desain Grafis & Dekorasi Visual -->
+          <div class="skill-card">
+            <div class="skill-header">
+              <h3 class="skill-name">Desain Grafis &amp; Komunikasi Visual</h3>
+              <span class="skill-level-badge">Kreatif</span>
+            </div>
+            <p class="skill-desc">Kreativitas penyampaian informasi visual berbekal pengalaman divisi Desain &amp; Dekorasi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-brand-title">Althof Rahmatullah</div>
+          <div class="footer-brand-inst">Institut Teknologi Sepuluh Nopember • Teknik Informatika</div>
+        </div>
+
+        <nav class="footer-nav-links" aria-label="Navigasi Footer">
+          <a href="#hero" class="footer-link">Home</a>
+          <a href="#about" class="footer-link">About</a>
+          <a href="#skills" class="footer-link">Skills</a>
+          <a href="mailto:althof.rahmatullah@gmail.com" class="footer-link">Email</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Althof Rahmatullah. All rights reserved.</p>
+        <a href="#hero" id="back-to-top" class="back-to-top-btn">
+          <span>Kembali ke Atas</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="js/main.js"></script>
+</body>
+</html>

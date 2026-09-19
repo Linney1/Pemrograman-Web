@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warta & Informasi - SMAN 15 Surabaya | Berita, Pengumuman & Agenda</title>
+  <meta name="description" content="Pusat informasi, berita terkini, pengumuman pemetaan kelas, serta agenda kegiatan SMA Negeri 15 Surabaya.">
+  <link rel="icon" type="image/png" href="../assets/images/SMAN-15-SBY.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Contact Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <span class="top-bar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          (031) 8290473
+        </span>
+        <span class="top-bar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          sman15sby@yahoo.co.id
+        </span>
+      </div>
+      <div class="top-bar-social">
+        <a href="https://instagram.com/15libels" target="_blank" rel="noopener">Instagram @15libels</a>
+        <span>|</span>
+        <a href="kontak.html">Kontak Sekolah</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-logo" aria-label="Beranda SMAN 15 Surabaya">
+        <img src="../assets/images/SMAN-15-SBY.png" alt="Logo SMAN 15 Surabaya" class="brand-logo-img">
+        <div class="brand-info">
+          <span class="brand-name">SMAN 15 SURABAYA</span>
+          <span class="brand-tagline">Llego A Ganar &bull; Libels</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <nav class="main-nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link">Beranda</a></li>
+          <li><a href="profil.html" class="nav-link">Profil</a></li>
+          <li><a href="akademik.html" class="nav-link">Akademik</a></li>
+          <li><a href="kesiswaan.html" class="nav-link">Kesiswaan</a></li>
+          <li><a href="berita.html" class="nav-link active">Berita</a></li>
+          <li><a href="galeri.html" class="nav-link">Galeri</a></li>
+          <li><a href="kontak.html" class="nav-link">Kontak</a></li>
+          <li><a href="ppdb.html" class="nav-link nav-cta">PPDB 2026</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div class="page-banner">
+    <div class="container page-banner-content">
+      <div class="breadcrumbs">
+        <a href="../index.html">Beranda</a>
+        <span>&rsaquo;</span>
+        <span>Warta & Informasi</span>
+      </div>
+      <h1 class="page-banner-title">Warta & Berita Terkini</h1>
+      <p class="page-banner-desc">Pembaruan kabar prestasi, liputan kegiatan sekolah, edaran resmi dinas, dan pengumuman pemetaan kelas SMAN 15 Surabaya.</p>
+    </div>
+  </div>
+
+  <!-- Search & Filter Controls -->
+  <section class="section" style="padding-bottom: 20px;">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 30px;">
+        <!-- Filter Tabs -->
+        <div class="filter-bar" style="margin-bottom: 0;">
+          <button class="filter-btn active news-filter-btn" data-category="all">Semua Warta</button>
+          <button class="filter-btn news-filter-btn" data-category="pengumuman">Pengumuman</button>
+          <button class="filter-btn news-filter-btn" data-category="akademik">Akademik</button>
+          <button class="filter-btn news-filter-btn" data-category="kesiswaan">Kesiswaan</button>
+          <button class="filter-btn news-filter-btn" data-category="prestasi">Prestasi</button>
+        </div>
+
+        <!-- Live Search Input -->
+        <div style="min-width: 260px; max-width: 340px; width: 100%;">
+          <input type="text" id="news-search-input" class="form-control" placeholder="Cari berita atau pengumuman...">
+        </div>
+      </div>
+
+      <!-- News Cards Grid -->
+      <div class="cards-grid-3" id="news-grid">
+        <!-- News 1: Pengumuman Pemetaan Kelas -->
+        <div class="card news-card-item" data-category="pengumuman" data-full-content="<p>Diberitahukan kepada seluruh siswa kelas XI SMAN 15 Surabaya Tahun Ajaran 2026/2027 bahwa proses pemetaan kelas dan penempatan peminatan mata pelajaran pilihan Fase F telah rampung dilaksanakan oleh Tim Pengembang Kurikulum.</p><p>Siswa dan orang tua dapat mengunduh daftar rombel dan jadwal tatap muka langsung melalui portal e-learning maupun papan pengumuman lobi sekolah.</p><p>Bagi siswa yang membutuhkan konsultasi pemilihan mata pelajaran, ruang Bimbingan Konseling (BK) membuka layanan setiap hari kerja pukul 08.00 - 14.00 WIB.</p>">
+          <img src="../assets/images/berita-fase.jpg" alt="Pemetaan Kelas Fase F" class="card-img">
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-navy">Pengumuman</span>
+              <span>15 September 2026</span>
+            </div>
+            <h3 class="card-title">Pengumuman Pemetaan Kelas XI Fase F Tahun Ajaran 2026/2027</h3>
+            <p class="card-text">Pemberitahuan penetapan rombongan belajar dan kombinasi mata pelajaran pilihan Fase F bagi siswa kelas XI di bawah bimbingan WaKa Kurikulum.</p>
+            <div class="card-footer">
+              <span style="font-size: 12px; color: var(--color-text-muted);">Penulis: Tim Kurikulum</span>
+              <button class="btn btn-outline btn-sm btn-read-news">Baca Selengkapnya &raquo;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- News 2: Libels Party -->
+        <div class="card news-card-item" data-category="kesiswaan" data-full-content="<p>Organisasi Siswa Intra Sekolah (OSIS) bersama Majelis Permusyawaratan Kelas (MPK) SMAN 15 Surabaya resmi mengumumkan kick-off persiapan festival seni tahunan 'Libels Party 2026'.</p><p>Tahun ini, perhelatan akan mengangkat tema persatuan keberagaman nusantara dengan kolaborasi tari kontemporer, teater musikal, dan pameran instalasi seni lingkungan hidup. Bintang tamu musisi nasional ternama dijadwalkan akan turut memeriahkan panggung utama.</p><p>Ikuti perkembangan tiket dan jadwal audisi band melalui akun resmi Instagram @15libels.</p>">
+          <img src="../assets/images/libels-party.jpg" alt="Libels Party" class="card-img">
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-gold">Kesiswaan</span>
+              <span>08 September 2026</span>
+            </div>
+            <h3 class="card-title">Antusiasme Persiapan Libels Party 2026 Bersama OSIS & MPK</h3>
+            <p class="card-text">Keluarga besar Libels kembali bersiap menyuguhkan pergelaran seni spektakuler yang dinanti ribuan pelajar se-Surabaya dan Jawa Timur.</p>
+            <div class="card-footer">
+              <span style="font-size: 12px; color: var(--color-text-muted);">Penulis: OSIS Libels</span>
+              <button class="btn btn-outline btn-sm btn-read-news">Baca Selengkapnya &raquo;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- News 3: Workshop Guru Kurikulum Merdeka -->
+        <div class="card news-card-item" data-category="akademik" data-full-content="<p>Dalam rangka peningkatan kualitas mutu pembelajaran abad-21, SMAN 15 Surabaya menyelenggarakan Workshop Penguatan Asesmen Pembelajaran Berdiferensiasi Kurikulum Merdeka.</p><p>Kegiatan yang dibuka langsung oleh Kepala Sekolah Johanes Mardijono, S.Pd., M.M. ini diikuti oleh 70 lebih pendidik dari rumpun MIPA, IPS, Bahasa, dan Vokasi.</p><p>Materi difokuskan pada pemanfaatan platform asesmen digital, pengolahan portofolio siswa, serta pengembangan modul ajar ramah lingkungan sesuai predikat Sekolah Adiwiyata Mandiri.</p>">
+          <img src="../assets/images/kbm-kelas.jpg" alt="Workshop Guru" class="card-img">
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-blue">Akademik</span>
+              <span>01 September 2026</span>
+            </div>
+            <h3 class="card-title">Penguatan Kompetensi Guru Melalui Workshop Asesmen Berdiferensiasi</h3>
+            <p class="card-text">Pelatihan intensif dewan guru SMAN 15 dalam mengadaptasi kurikulum inovatif dan merancang modul ajar berbasis pemecahan masalah.</p>
+            <div class="card-footer">
+              <span style="font-size: 12px; color: var(--color-text-muted);">Penulis: Humas Libels</span>
+              <button class="btn btn-outline btn-sm btn-read-news">Baca Selengkapnya &raquo;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- News 4: Prestasi KIR Sains -->
+        <div class="card news-card-item" data-category="prestasi" data-full-content="<p>Kabar membanggakan kembali datang dari ekstrakurikuler Karya Ilmiah Remaja (KIR) SMAN 15 Surabaya. Tim riset sains yang terdiri dari siswa kelas XI berhasil merebut Juara 1 dalam Lomba Karya Tulis Ilmiah Lingkungan Hidup Tingkat Provinsi Jawa Timur.</p><p>Karya berjudul 'Pemanfaatan Limbah Organik Sebagai Pupuk Cair Cerdas' diapresiasi dewan juri atas orisinalitas riset dan penerapannya secara nyata di taman Adiwiyata SMAN 15 Surabaya.</p>">
+          <img src="../assets/images/lab-sains.jpg" alt="KIR Sains" class="card-img">
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-gold">Prestasi</span>
+              <span>24 Agustus 2026</span>
+            </div>
+            <h3 class="card-title">Tim Riset KIR SMAN 15 Raih Juara 1 Karya Tulis Ilmiah Nasional</h3>
+            <p class="card-text">Inovasi pupuk organik ramah lingkungan karya siswa Libels berhasil mengungguli puluhan perwakilan sekolah se-Jawa Timur.</p>
+            <div class="card-footer">
+              <span style="font-size: 12px; color: var(--color-text-muted);">Penulis: Pembina KIR</span>
+              <button class="btn btn-outline btn-sm btn-read-news">Baca Selengkapnya &raquo;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- News 5: Kesiapan ANBK Digital -->
+        <div class="card news-card-item" data-category="akademik" data-full-content="<p>SMAN 15 Surabaya memastikan kesiapan sarana laboratorium komputer dan bandwidth internet sekolah dalam menyongsong pelaksanaan Asesmen Nasional Berbasis Komputer (ANBK) tahun 2026.</p><p>Simulasi teknis telah dilaksanakan selama dua hari dengan melibatkan 150 siswa sampel dan pengawas silang dari musyawarah kerja kepala sekolah (MKKS) Surabaya Selatan.</p>">
+          <img src="../assets/images/lab-komputer.jpg" alt="Laboratorium Komputer" class="card-img">
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-blue">Akademik</span>
+              <span>18 Agustus 2026</span>
+            </div>
+            <h3 class="card-title">Simulasi ANBK Sukses, Laboratorium Komputer SMAN 15 Siap 100%</h3>
+            <p class="card-text">Tiga ruang laboratorium TIK dengan koneksi fiber optic mandiri siap memfasilitasi asesmen literasi dan numerasi nasional.</p>
+            <div class="card-footer">
+              <span style="font-size: 12px; color: var(--color-text-muted);">Penulis: Tim TIK Libels</span>
+              <button class="btn btn-outline btn-sm btn-read-news">Baca Selengkapnya &raquo;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- News 6: Upacara Kemerdekaan RI -->
+        <div class="card news-card-item" data-category="kesiswaan" data-full-content="<p>Ratusan siswa, dewan guru, dan staf tata usaha SMAN 15 Surabaya mengikuti upacara peringatan Hari Kemerdekaan Republik Indonesia ke-81 dengan khidmat di lapangan utama sekolah.</p><p>Pasukan pengibar bendera PASLIBELS sukses melaksanakan tugas pengibaran sang saka Merah Putih dengan sempurna, diiringi alunan lagu kebangsaan oleh tim Paduan Suara Libels Voice.</p>">
+          <img src="../assets/images/upacara.jpg" alt="Upacara HUT RI" class="card-img">
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="badge badge-navy">Kesiswaan</span>
+              <span>17 Agustus 2026</span>
+            </div>
+            <h3 class="card-title">Khidmat Upacara HUT Kemerdekaan RI Bersama Warga SMAN 15</h3>
+            <p class="card-text">Penampilan apik PASLIBELS dan Libels Voice mengiringi perayaan kemerdekaan dengan semangat nasionalisme tinggi.</p>
+            <div class="card-footer">
+              <span style="font-size: 12px; color: var(--color-text-muted);">Penulis: Kesiswaan</span>
+              <button class="btn btn-outline btn-sm btn-read-news">Baca Selengkapnya &raquo;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Detail Modal -->
+  <div class="news-modal" id="news-detail-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="news-modal-content">
+      <button class="news-modal-close" id="news-modal-close" aria-label="Tutup Berita">&times;</button>
+      <div id="news-modal-meta" class="card-meta" style="margin-bottom: 12px;"></div>
+      <h2 id="news-modal-title" style="font-size: 24px; color: var(--color-primary); margin-bottom: 18px; line-height: 1.3;"></h2>
+      <img id="news-modal-img" src="" alt="Thumbnail Berita" style="width: 100%; max-height: 320px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 20px; border: 1px solid var(--color-border);">
+      <div id="news-modal-body" style="font-size: 14.5px; line-height: 1.8; color: var(--color-text-body);"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <img src="../assets/images/SMAN-15-SBY.png" alt="Logo SMAN 15 Surabaya" style="width: 44px; height: 44px; object-fit: contain;">
+          <div>
+            <h3 style="margin-bottom: 2px;">SMAN 15 SURABAYA</h3>
+            <span class="tagline" style="margin-bottom: 0;">Llego A Ganar &bull; Libels</span>
+          </div>
+        </div>
+        <p>Menyajikan informasi transparan, aktual, dan terpercaya bagi seluruh orang tua dan masyarakat.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">Beranda</a></li>
+          <li><a href="profil.html">Profil Sekolah</a></li>
+          <li><a href="akademik.html">Program Akademik</a></li>
+          <li><a href="kesiswaan.html">Kesiswaan</a></li>
+          <li><a href="galeri.html">Galeri Dokumentasi</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Layanan Publik</h4>
+        <ul class="footer-links">
+          <li><a href="ppdb.html">PPDB 2026</a></li>
+          <li><a href="https://elearning.sman15-sby.sch.id/" target="_blank" rel="noopener">e-Learning</a></li>
+          <li><a href="kontak.html">Kontak Tata Usaha</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kontak Resmi</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>Jl. Menanggal Selatan No. 103, Gayungan, Surabaya</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Telepon: (031) 8290473</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 SMAN 15 Surabaya. Hak Cipta Dilindungi Undang-Undang.</p>
+      <p><a href="#top" style="color: #cbd5e1;">Kembali ke atas &uarr;</a></p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Kembali ke atas">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
