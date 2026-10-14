@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Management — Sistem Pengelolaan Data Mahasiswa</title>
+  <meta name="description" content="Aplikasi dashboard pengelolaan data mahasiswa (CRUD) berbasis web dengan HTML, CSS, dan JavaScript murni tanpa framework." />
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230284c7'%3E%3Cpath d='M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18C5 19.94 8.13 22 12 22C15.87 22 19 19.94 19 17.18V13.18L12 17.18L5 13.18Z'/%3E%3C/svg%3E" />
+
+  <!-- Typography: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar" role="banner">
+    <div class="navbar-container">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Student Management</span>
+          <span class="brand-tag">Portal Akademik</span>
+        </div>
+      </div>
+
+      <!-- FR-15: Menu Home, Students, About hanya tampilan dan tidak dapat diklik -->
+      <nav class="nav-menu" aria-label="Navigasi Statis">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <span class="nav-link-static" tabindex="-1" aria-disabled="true">Home</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link-static active" tabindex="-1" aria-disabled="true" aria-current="page">Students</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link-static" tabindex="-1" aria-disabled="true">About</span>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Profil Pengguna -->
+      <div class="navbar-profile">
+        <div class="profile-avatar" aria-hidden="true">AA</div>
+        <div class="profile-info">
+          <span class="profile-name">Admin Akademik</span>
+          <span class="profile-status">
+            <span class="status-dot"></span> Sesi Aktif
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= KONTEN UTAMA ================= -->
+  <main class="main-content" id="mainContent">
+    <div class="content-container">
+      
+      <!-- Page Header & Metrics Summary -->
+      <section class="page-header" aria-labelledby="pageTitle">
+        <div>
+          <div class="breadcrumb">
+            <span>Dashboard</span>
+            <span class="breadcrumb-separator">/</span>
+            <span>Data Master</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Mahasiswa</span>
+          </div>
+          <h1 id="pageTitle" class="page-title">Pengelolaan Data Mahasiswa</h1>
+          <p class="page-subtitle">Pencatatan, pembaruan, dan pemantauan data mahasiswa aktif dalam satu dashboard terintegrasi.</p>
+        </div>
+
+        <div class="stats-summary" aria-label="Ringkasan Statistik">
+          <div class="stat-pill">
+            <span class="stat-label">Total Mahasiswa</span>
+            <span class="stat-value" id="statTotalStudents">0</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">Jurusan Terdaftar</span>
+            <span class="stat-value">6 Jurusan</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grid 2 Kolom: Kartu Kiri (Form) dan Kartu Kanan (Data Mahasiswa) -->
+      <div class="dashboard-grid">
+        
+        <!-- ================= KARTU KIRI: FORM STUDENT ================= -->
+        <aside class="dashboard-column column-form" aria-label="Formulir Mahasiswa">
+          <div class="card card-form">
+            <div class="card-header">
+              <div class="card-header-title">
+                <div class="card-icon card-icon-primary" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7.5" r="4"></circle>
+                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="card-title" id="formHeading">Form Student</h2>
+                  <p class="card-description">Lengkapi data mahasiswa di bawah ini</p>
+                </div>
+              </div>
+              <span class="mode-badge mode-add" id="formModeBadge">Tambah Data</span>
+            </div>
+
+            <!-- Banner info saat mode edit aktif -->
+            <div class="edit-notification" id="editNotification" style="display: none;" role="status">
+              <div class="edit-notification-content">
+                <svg class="notification-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span>Sedang mengedit mahasiswa NIM: <strong id="editNimLabel">-</strong></span>
+              </div>
+              <button type="button" class="btn-link" id="btnBatalEditQuick" title="Batalkan edit">Batal</button>
+            </div>
+
+            <form id="formMahasiswa" novalidate autocomplete="off">
+              <!-- Field NIM (FR-01) -->
+              <div class="form-group" id="groupNim">
+                <label for="inputNim" class="form-label">
+                  Nomor Induk Mahasiswa (NIM) <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <input
+                    type="text"
+                    id="inputNim"
+                    name="nim"
+                    class="form-control font-mono"
+                    placeholder="Contoh: 5025211001"
+                    inputmode="numeric"
+                    maxlength="16"
+                    aria-describedby="errorNim helperNim"
+                    required
+                  />
+                  <span class="input-addon font-mono" id="nimLengthCounter">0/16</span>
+                </div>
+                <div class="form-error" id="errorNim" role="alert" aria-live="polite"></div>
+                <div class="form-helper" id="helperNim">Wajib diisi angka dan unik (belum terdaftar).</div>
+              </div>
+
+              <!-- Field Nama Lengkap (FR-02) -->
+              <div class="form-group" id="groupNama">
+                <label for="inputNama" class="form-label">
+                  Nama Lengkap <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="inputNama"
+                  name="nama"
+                  class="form-control"
+                  placeholder="Contoh: Ahmad Rizki Pratama"
+                  maxlength="70"
+                  aria-describedby="errorNama"
+                  required
+                />
+                <div class="form-error" id="errorNama" role="alert" aria-live="polite"></div>
+              </div>
+
+              <!-- Field Jurusan (FR-03) -->
+              <div class="form-group" id="groupJurusan">
+                <label for="selectJurusan" class="form-label">
+                  Jurusan <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <div class="select-wrapper">
+                  <select
+                    id="selectJurusan"
+                    name="jurusan"
+                    class="form-control form-select"
+                    aria-describedby="errorJurusan"
+                    required
+                  >
+                    <option value="" disabled selected>Pilih salah satu jurusan...</option>
+                    <option value="Sistem Informasi">Sistem Informasi</option>
+                    <option value="Teknologi Informasi">Teknologi Informasi</option>
+                    <option value="Teknik Informatika">Teknik Informatika</option>
+                    <option value="Teknik Elektro">Teknik Elektro</option>
+                    <option value="Teknik Komputer">Teknik Komputer</option>
+                    <option value="Teknik Biomedik">Teknik Biomedik</option>
+                  </select>
+                </div>
+                <div class="form-error" id="errorJurusan" role="alert" aria-live="polite"></div>
+              </div>
+
+              <!-- Field Email (FR-04) -->
+              <div class="form-group" id="groupEmail">
+                <label for="inputEmail" class="form-label">
+                  Alamat Email <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="inputEmail"
+                  name="email"
+                  class="form-control"
+                  placeholder="Contoh: ahmad.rizki@student.its.ac.id"
+                  maxlength="80"
+                  aria-describedby="errorEmail"
+                  required
+                />
+                <div class="form-error" id="errorEmail" role="alert" aria-live="polite"></div>
+              </div>
+
+              <!-- Tombol Form (FR-06, FR-07, FR-08, FR-10) -->
+              <div class="form-actions">
+                <button type="submit" id="btnSimpan" class="btn btn-primary">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                  </svg>
+                  <span id="textBtnSimpan">Simpan</span>
+                </button>
+
+                <button type="button" id="btnBatal" class="btn btn-secondary" title="Batalkan pengisian atau mode edit">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                  <span>Batal</span>
+                </button>
+
+                <button type="button" id="btnReset" class="btn btn-tertiary" title="Kosongkan seluruh isian dan pesan error">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </aside>
+
+        <!-- ================= KARTU KANAN: DATA MAHASISWA ================= -->
+        <section class="dashboard-column column-table" aria-label="Tabel Data Mahasiswa">
+          <div class="card card-table">
+            <div class="card-header card-header-table">
+              <div class="card-header-title">
+                <div class="card-icon card-icon-secondary" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="card-title">Data Mahasiswa</h2>
+                  <p class="card-description">Daftar mahasiswa terdaftar di sistem</p>
+                </div>
+              </div>
+
+              <!-- FR-12: Kolom Pencarian Real-Time -->
+              <div class="table-search-box">
+                <div class="search-input-wrapper">
+                  <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input
+                    type="search"
+                    id="inputSearch"
+                    class="form-control search-input"
+                    placeholder="Cari NIM, nama, jurusan, email..."
+                    aria-label="Cari data mahasiswa"
+                    autocomplete="off"
+                  />
+                  <button type="button" id="btnClearSearch" class="btn-clear-search" style="display: none;" title="Hapus pencarian" aria-label="Hapus kata kunci pencarian">
+                    &times;
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabel Data (FR-09) -->
+            <div class="table-responsive">
+              <table class="data-table" id="tabelMahasiswa">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th-num">No</th>
+                    <th scope="col" class="th-nim">NIM</th>
+                    <th scope="col" class="th-nama">Nama Lengkap</th>
+                    <th scope="col" class="th-jurusan">Jurusan</th>
+                    <th scope="col" class="th-email">Email</th>
+                    <th scope="col" class="th-aksi text-center">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                  <!-- Data diisi oleh JavaScript -->
+                </tbody>
+              </table>
+
+              <!-- Pesan Kosong / Tidak Ditemukan -->
+              <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                  </svg>
+                </div>
+                <h3 class="empty-title" id="emptyTitle">Tidak ada data mahasiswa</h3>
+                <p class="empty-description" id="emptyDesc">Gunakan formulir di sebelah kiri untuk menambahkan data mahasiswa baru.</p>
+              </div>
+            </div>
+
+            <!-- Footer Tabel: Info Data & Pagination (FR-13) -->
+            <div class="card-footer table-footer">
+              <div class="footer-info">
+                <span id="paginationInfo" class="pagination-info">Menampilkan 0 - 0 dari 0 data</span>
+              </div>
+              <nav class="pagination-nav" aria-label="Navigasi Halaman Data">
+                <div class="pagination-controls" id="paginationControls">
+                  <!-- Tombol pagination digenerate oleh JavaScript -->
+                </div>
+              </nav>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= MODAL KONFIRMASI (FR-08 & FR-11) ================= -->
+  <div class="modal-backdrop" id="modalKonfirmasi" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalMessage" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-icon-wrapper" id="modalIconWrapper">
+            <svg class="modal-icon" id="modalIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <h3 class="modal-title" id="modalTitle">Konfirmasi Tindakan</h3>
+        </div>
+        <div class="modal-body">
+          <p id="modalMessage" class="modal-message">Apakah Anda yakin ingin melanjutkan tindakan ini?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="modalBtnBatal">Batal</button>
+          <button type="button" class="btn btn-danger" id="modalBtnKonfirmasi">Ya, Lanjutkan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="footer-text">
+        <strong>Student Management Dashboard</strong> &middot; Praktikum Pemrograman Web (Pertemuan 5)
+      </p>
+      <p class="footer-muted">
+        Dibangun dengan HTML, CSS, dan JavaScript murni tanpa framework eksternal.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Logic JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

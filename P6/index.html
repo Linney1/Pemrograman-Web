@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pertemuan 6 — Form Registration &amp; Email Validation</title>
+  <meta name="description"
+    content="Tugas Pemrograman Web Pertemuan 6: form registrasi sederhana dan form validasi email menggunakan HTML, CSS, dan JavaScript murni tanpa framework." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div>
+        <p class="eyebrow">Pemrograman Web · Pertemuan 6</p>
+        <h1>Validasi Form di Sisi Klien</h1>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Navigasi utama">
+      <button class="nav-btn aktif" id="nav-beranda" data-target="beranda">Beranda</button>
+      <button class="nav-btn" id="nav-tugas1" data-target="tugas1">Tugas 1</button>
+      <button class="nav-btn" id="nav-tugas2" data-target="tugas2">Tugas 2</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= BERANDA ================= -->
+    <section id="beranda" class="halaman aktif" aria-labelledby="judul-beranda">
+      <div class="hero card">
+        <h2 id="judul-beranda">Dua form, divalidasi dengan JavaScript sebelum dikirim</h2>
+        <p class="muted">
+          Dibuat dengan HTML, CSS, dan JavaScript murni tanpa framework atau library. Pilih tugas
+          di bawah untuk mencoba.
+        </p>
+      </div>
+
+      <div class="menu-grid">
+        <button class="menu-card card" id="menu-tugas1" data-target="tugas1">
+          <span class="menu-num">Tugas 01</span>
+          <b>Form Registration Sederhana</b>
+          <span class="muted">
+            Registrasi mahasiswa dengan autocomplete nama, validasi setiap field, indikator kekuatan
+            password, dan tabel data terdaftar.
+          </span>
+          <span class="menu-cta">Buka tugas →</span>
+        </button>
+
+        <button class="menu-card card" id="menu-tugas2" data-target="tugas2">
+          <span class="menu-num">Tugas 02</span>
+          <b>Email Validation Form</b>
+          <span class="muted">
+            Validasi email secara real-time dengan checklist aturan, saran typo domain, dan validasi
+            banyak email sekaligus.
+          </span>
+          <span class="menu-cta">Buka tugas →</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= TUGAS 1 ================= -->
+    <section id="tugas1" class="halaman" aria-labelledby="judul-tugas1">
+      <div class="section-head">
+        <p class="eyebrow">Tugas 1</p>
+        <h2 id="judul-tugas1">Form Registration Sederhana</h2>
+        <p class="muted">
+          Ketik beberapa huruf pada kolom nama untuk memunculkan rekomendasi. Semua field divalidasi
+          dengan JavaScript sebelum data disimpan.
+        </p>
+      </div>
+
+      <div class="layout-2">
+        <form id="formRegistrasi" class="card form" novalidate>
+          <div class="field autocomplete">
+            <label for="regNama">Nama Lengkap</label>
+            <input type="text" id="regNama" name="nama" placeholder="contoh: Andi Pratama" autocomplete="off" />
+            <div id="rekomendasiNama" class="suggestions" role="listbox"></div>
+            <small class="error" data-for="regNama"></small>
+          </div>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="regNim">NRP / NIM</label>
+              <input type="text" id="regNim" name="nim" placeholder="10 digit angka" inputmode="numeric"
+                maxlength="10" />
+              <small class="error" data-for="regNim"></small>
+            </div>
+            <div class="field">
+              <label for="regProdi">Program Studi</label>
+              <select id="regProdi" name="prodi">
+                <option value="">-- Pilih program studi --</option>
+                <option>Teknik Informatika</option>
+                <option>Sistem Informasi</option>
+                <option>Teknologi Informasi</option>
+                <option>Rekayasa Perangkat Lunak</option>
+                <option>Sains Data</option>
+              </select>
+              <small class="error" data-for="regProdi"></small>
+            </div>
+          </div>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="regEmail">Email</label>
+              <input type="email" id="regEmail" name="email" placeholder="nama@student.its.ac.id"
+                autocomplete="email" />
+              <small class="error" data-for="regEmail"></small>
+            </div>
+            <div class="field">
+              <label for="regHp">No. HP</label>
+              <input type="tel" id="regHp" name="hp" placeholder="08xxxxxxxxxx" autocomplete="tel" />
+              <small class="error" data-for="regHp"></small>
+            </div>
+          </div>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="regPassword">Password</label>
+              <div class="input-wrap">
+                <input type="password" id="regPassword" name="password" placeholder="min. 8 karakter"
+                  autocomplete="new-password" />
+                <button type="button" class="toggle-pass" id="togglePassword"
+                  aria-label="Tampilkan password">Lihat</button>
+              </div>
+              <div class="strength" aria-hidden="true"><span id="strengthBar"></span></div>
+              <small class="hint" id="strengthText">Gunakan huruf besar, kecil, angka &amp; simbol.</small>
+              <small class="error" data-for="regPassword"></small>
+            </div>
+            <div class="field">
+              <label for="regKonfirmasi">Konfirmasi Password</label>
+              <input type="password" id="regKonfirmasi" name="konfirmasi" placeholder="ulangi password"
+                autocomplete="new-password" />
+              <small class="error" data-for="regKonfirmasi"></small>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="label">Jenis Kelamin</span>
+            <div class="choice-group" id="regGender">
+              <label class="chip"><input type="radio" name="gender" value="Laki-laki" id="genderL" />
+                <span>Laki-laki</span></label>
+              <label class="chip"><input type="radio" name="gender" value="Perempuan" id="genderP" />
+                <span>Perempuan</span></label>
+            </div>
+            <small class="error" data-for="regGender"></small>
+          </div>
+
+          <div class="field">
+            <label class="check">
+              <input type="checkbox" id="regSetuju" name="setuju" />
+              <span>Saya menyetujui syarat &amp; ketentuan yang berlaku.</span>
+            </label>
+            <small class="error" data-for="regSetuju"></small>
+          </div>
+
+          <div class="actions">
+            <button type="reset" class="btn btn-ghost" id="btnResetRegistrasi">Reset</button>
+            <button type="submit" class="btn btn-primary" id="btnSubmitRegistrasi">Daftar Sekarang</button>
+          </div>
+
+          <div id="hasilRegistrasi" class="alert" role="status" aria-live="polite"></div>
+        </form>
+
+        <aside class="card side">
+          <h3>Data Terdaftar</h3>
+          <p class="muted small">Data hanya tersimpan sementara di halaman ini.</p>
+          <div id="daftarKosong" class="empty">Belum ada data registrasi.</div>
+          <ul id="daftarRegistrasi" class="reg-list"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ================= TUGAS 2 ================= -->
+    <section id="tugas2" class="halaman" aria-labelledby="judul-tugas2">
+      <div class="section-head">
+        <p class="eyebrow">Tugas 2</p>
+        <h2 id="judul-tugas2">Email Validation Form</h2>
+        <p class="muted">
+          Email dicek secara real-time menggunakan Regular Expression dan beberapa aturan tambahan.
+        </p>
+      </div>
+
+      <div class="layout-2">
+        <form id="formEmail" class="card form" novalidate>
+          <div class="field">
+            <label for="inputEmail">Alamat Email</label>
+            <div class="input-wrap">
+              <input type="email" id="inputEmail" placeholder="contoh: user@gmail.com" autocomplete="email" />
+              <span class="status-icon" id="emailStatusIcon" aria-hidden="true"></span>
+            </div>
+            <small id="emailSaran" class="suggest"></small>
+          </div>
+
+          <ul class="rules" id="emailRules">
+            <li data-rule="notEmpty">Email tidak boleh kosong</li>
+            <li data-rule="noSpace">Tidak mengandung spasi</li>
+            <li data-rule="oneAt">Memiliki tepat satu simbol <code>@</code></li>
+            <li data-rule="local">Bagian sebelum <code>@</code> valid (huruf, angka, <code>. _ % + -</code>)</li>
+            <li data-rule="dots">Tidak diawali/diakhiri titik &amp; tanpa titik ganda</li>
+            <li data-rule="domain">Domain valid (contoh: <code>gmail.com</code>)</li>
+            <li data-rule="tld">Ekstensi domain minimal 2 huruf</li>
+          </ul>
+
+          <div class="actions">
+            <button type="button" class="btn btn-ghost" id="btnClearEmail">Bersihkan</button>
+            <button type="submit" class="btn btn-primary" id="btnCekEmail">Validasi Email</button>
+          </div>
+
+          <div id="hasilEmail" class="alert" role="status" aria-live="polite"></div>
+
+          <hr class="divider" />
+
+          <div class="field">
+            <label for="bulkEmail">Validasi Banyak Email</label>
+            <textarea id="bulkEmail" rows="4"
+              placeholder="Pisahkan dengan koma atau baris baru&#10;andi@gmail.com, budi@@mail, citra@its.ac.id"></textarea>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn btn-primary" id="btnCekBulk">Cek Semua</button>
+          </div>
+          <div id="hasilBulk" class="bulk-result"></div>
+        </form>
+
+        <aside class="card side">
+          <h3>Riwayat Pengecekan</h3>
+          <p class="muted small">Email yang sudah divalidasi lewat tombol <b>Validasi Email</b>.</p>
+          <div class="stats">
+            <div><span id="statValid">0</span><small>Valid</small></div>
+            <div><span id="statInvalid">0</span><small>Tidak valid</small></div>
+          </div>
+          <div id="riwayatKosong" class="empty">Belum ada riwayat.</div>
+          <ul id="riwayatEmail" class="history"></ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Pertemuan 6 · Pemrograman Web · HTML, CSS &amp; JavaScript tanpa framework</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
