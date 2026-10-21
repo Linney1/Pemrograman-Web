@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraryReg — Aplikasi Pendaftaran Anggota Perpustakaan ITS</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Custom Minimalist Stylesheet (Zero Gradient, Blue & White) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ======================================================================
+         HEADER & NAVBAR RESPONSIF (B. Pengelolaan Menu Navigasi)
+         ====================================================================== -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-library" id="mainNavbar">
+            <div class="container">
+                <!-- Logo & Nama Perpustakaan -->
+                <a class="navbar-brand-wrapper" href="index.html#beranda">
+                    <img src="Logo_1.png" alt="Logo Perpustakaan ITS" class="brand-logo">
+                    <div class="brand-divider d-none d-sm-block"></div>
+                    <div>
+                        <span class="brand-title">LibraryReg</span>
+                        <span class="brand-subtitle">Perpustakaan ITS</span>
+                    </div>
+                </a>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menu Navigasi Terstruktur -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-1" id="navMenuList">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#beranda" data-section="beranda">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tentang" data-section="tentang">Tentang Perpustakaan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#layanan" data-section="layanan">Layanan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#daftar-anggota" data-section="daftar-anggota" id="navLinkDaftar">Daftar Anggota</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pendaftaran.html">Pendaftaran Anggota</a>
+                        </li>
+                    </ul>
+
+                    <!-- Login Petugas (Simulasi Antarmuka) -->
+                    <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+                        <div id="staffStatusIndicator" class="d-none align-items-center gap-2">
+                            <span class="staff-badge-active">
+                                <i class="bi bi-person-check-fill me-1"></i>Petugas (Admin)
+                            </span>
+                            <button type="button" class="btn btn-neutral-flat btn-sm" id="btnLogoutStaff" title="Keluar dari Mode Petugas">
+                                <i class="bi bi-box-arrow-right me-1"></i>Keluar
+                            </button>
+                        </div>
+                        <button type="button" class="btn btn-outline-flat btn-sm px-3 py-2" id="btnOpenLoginModal" data-bs-toggle="modal" data-bs-target="#modalLoginPetugas">
+                            <i class="bi bi-shield-lock me-1"></i>Login Petugas
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ==================================================================
+             A.1 HERO SECTION (Beranda)
+             ================================================================== -->
+        <section id="beranda" class="hero-section">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <div class="section-tag">
+                            <span class="section-tag-dot"></span>
+                            Sistem Pendaftaran Digital Terpadu
+                        </div>
+                        <h1 class="hero-title">
+                            Pendaftaran Anggota <span class="text-accent-blue">Perpustakaan ITS</span> Lebih Cepat &amp; Tanpa Kertas
+                        </h1>
+                        <p class="hero-desc">
+                            <strong>LibraryReg</strong> menggantikan formulir kertas manual dengan sistem registrasi anggota daring yang tervalidasi otomatis, pencarian data instan, serta pengelolaan kartu anggota digital bagi sivitas akademika.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="pendaftaran.html" class="btn btn-primary-flat">
+                                <i class="bi bi-person-plus-fill me-2"></i>Daftar Anggota Sekarang
+                            </a>
+                            <a href="#daftar-anggota" class="btn btn-outline-flat" id="heroBtnDaftar">
+                                <i class="bi bi-people me-2"></i>Lihat Daftar Anggota
+                            </a>
+                        </div>
+
+                        <div class="hero-checklist">
+                            <div class="hero-checklist-item">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Bebas Antrean Loket</span>
+                            </div>
+                            <div class="hero-checklist-item">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Validasi NIM/NIP Otomatis</span>
+                            </div>
+                            <div class="hero-checklist-item">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Kartu Anggota Instan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ilustrasi Kartu Anggota Digital Minimalis -->
+                    <div class="col-lg-5">
+                        <div class="hero-preview-panel">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <span class="small fw-semibold text-secondary text-uppercase">Pratinjau Kartu Anggota Digital</span>
+                                <span class="badge-role badge-mahasiswa">Aktif Terverifikasi</span>
+                            </div>
+                            <div class="member-card-preview">
+                                <div class="d-flex align-items-center justify-content-between pb-3 mb-3 border-bottom">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="Logo_1.png" alt="Logo Perpustakaan ITS" style="height: 32px;">
+                                        <div>
+                                            <div class="fw-bold small text-dark">KARTU ANGGOTA</div>
+                                            <div class="text-muted" style="font-size: 0.72rem;">UPT Perpustakaan ITS Surabaya</div>
+                                        </div>
+                                    </div>
+                                    <i class="bi bi-qr-code fs-3 text-primary"></i>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="text-muted small">Nama Lengkap</div>
+                                    <div class="fw-bold fs-6">Raka Pratama Putra</div>
+                                </div>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-6">
+                                        <div class="text-muted small">NIM / NRP</div>
+                                        <div class="fw-semibold small">5025221014</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-muted small">Program Studi</div>
+                                        <div class="fw-semibold small">Teknik Informatika</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                                    <span class="small text-muted">Status Keanggotaan</span>
+                                    <span class="fw-semibold small" style="color: var(--primary-blue);">Mahasiswa Reguler</span>
+                                </div>
+                            </div>
+                            <div class="mt-3 d-flex align-items-center justify-content-between small text-secondary">
+                                <span><i class="bi bi-hdd-network me-1 text-primary"></i>Tersimpan otomatis di LocalStorage</span>
+                                <a href="pendaftaran.html" class="text-decoration-none fw-semibold" style="color: var(--primary-blue);">Buat Kartu &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             A.2 STATISTIK ILUSTRATIF KOLEKSI & ANGGOTA
+             ================================================================== -->
+        <section class="stats-bar" aria-label="Statistik Perpustakaan">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-6 col-lg-3">
+                        <div class="stat-item">
+                            <div class="stat-number">148.500+</div>
+                            <p class="stat-label">Koleksi Buku Cetak &amp; Referensi</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="stat-item">
+                            <div class="stat-number">62.300+</div>
+                            <p class="stat-label">E-Journal &amp; Repositori Digital</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="stat-item">
+                            <div class="stat-number" id="statActiveMembers">24.850</div>
+                            <p class="stat-label">Total Sivitas Anggota Aktif</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="stat-item">
+                            <div class="stat-number" id="statRegisteredOnline">0</div>
+                            <p class="stat-label">Data Terdaftar di Sistem LibraryReg</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             A.3 TENTANG PERPUSTAKAAN, KEUNGGULAN & FASILITAS
+             ================================================================== -->
+        <section id="tentang" class="section-block section-bg-white">
+            <div class="container">
+                <div class="row justify-content-between align-items-end mb-5">
+                    <div class="col-lg-7">
+                        <div class="section-tag">
+                            <span class="section-tag-dot"></span>
+                            Tentang Perpustakaan
+                        </div>
+                        <h2 class="section-heading">Keunggulan &amp; Fasilitas Penunjang Akademik</h2>
+                        <p class="section-subheading mb-0">
+                            Perpustakaan ITS berkomitmen menghadirkan ekosistem literasi modern dengan transformasi administrasi berbasis web untuk mendukung kegiatan riset dan pembelajaran.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                        <a href="pendaftaran.html" class="btn btn-outline-flat">
+                            Gabung Menjadi Anggota <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3 Keunggulan Utama -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4">
+                        <div class="minimal-card minimal-card-accent-top">
+                            <div class="icon-box">
+                                <i class="bi bi-lightning-charge"></i>
+                            </div>
+                            <h3 class="card-title-minimal">Registrasi Tanpa Antrean</h3>
+                            <p class="card-text-minimal">
+                                Mengeliminasi pengisian formulir kertas di meja layanan. Mahasiswa, dosen, dan tendik dapat mendaftar mandiri dari perangkat masing-masing.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="minimal-card minimal-card-accent-top">
+                            <div class="icon-box">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h3 class="card-title-minimal">Akurasi &amp; Validasi Data</h3>
+                            <p class="card-text-minimal">
+                                Setiap pendaftaran divalidasi secara ketat mulai dari kelengkapan kolom wajib, format email resmi, hingga keunikan NIM/NIP.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="minimal-card minimal-card-accent-top">
+                            <div class="icon-box">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <h3 class="card-title-minimal">Pencarian Anggota Instan</h3>
+                            <p class="card-text-minimal">
+                                Pengunjung dapat memeriksa status pendaftaran dan petugas perpustakaan dapat mengelola data anggota hanya dalam hitungan detik.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daftar Fasilitas Fisik & Digital -->
+                <div class="p-4 rounded-3" style="background-color: var(--bg-surface); border: 1px solid var(--border-color);">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
+                        <h3 class="h6 fw-bold text-uppercase mb-0" style="letter-spacing: 0.04em; color: var(--primary-blue);">
+                            <i class="bi bi-building me-2"></i>Fasilitas Unggulan Gedung Perpustakaan
+                        </h3>
+                        <span class="small text-secondary">Gedung Perpustakaan Lantai 1 – 6, Kampus ITS Sukolilo</span>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="facility-pill">
+                                <div class="facility-pill-icon"><i class="bi bi-laptop"></i></div>
+                                <div>
+                                    <div class="fw-bold small">Co-Working &amp; Ruang Baca</div>
+                                    <div class="text-secondary" style="font-size: 0.82rem;">Area baca tenang ber-AC dengan stopkontak di setiap meja.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="facility-pill">
+                                <div class="facility-pill-icon"><i class="bi bi-people"></i></div>
+                                <div>
+                                    <div class="fw-bold small">Ruang Diskusi Kelompok</div>
+                                    <div class="text-secondary" style="font-size: 0.82rem;">Ruang kolaborasi kedap suara dilengkapi proyektor pintar.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="facility-pill">
+                                <div class="facility-pill-icon"><i class="bi bi-wifi"></i></div>
+                                <div>
+                                    <div class="fw-bold small">Akses Wi-Fi &amp; Lab Komputer</div>
+                                    <div class="text-secondary" style="font-size: 0.82rem;">Koneksi internet berkecepatan tinggi dan komputer katalog OPAC.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="facility-pill">
+                                <div class="facility-pill-icon"><i class="bi bi-upc-scan"></i></div>
+                                <div>
+                                    <div class="fw-bold small">Self-Loan Kiosk Mandiri</div>
+                                    <div class="text-secondary" style="font-size: 0.82rem;">Mesin peminjaman dan pengembalian buku mandiri berbasis RFID.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             A.4 INFORMASI LAYANAN PERPUSTAKAAN
+             ================================================================== -->
+        <section id="layanan" class="section-block section-bg-surface">
+            <div class="container">
+                <div class="text-center mx-auto mb-5" style="max-width: 640px;">
+                    <div class="section-tag">
+                        <span class="section-tag-dot"></span>
+                        Layanan Utama
+                    </div>
+                    <h2 class="section-heading">Layanan Terintegrasi Sivitas Akademika</h2>
+                    <p class="section-subheading mx-auto mb-0">
+                        Keanggotaan LibraryReg memberikan akses penuh ke seluruh layanan sirkulasi fisik maupun literatur ilmiah digital Perpustakaan ITS.
+                    </p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="minimal-card">
+                            <div class="icon-box">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <h3 class="card-title-minimal">Sirkulasi Peminjaman</h3>
+                            <p class="card-text-minimal">
+                                Peminjaman buku teks hingga 10 eksemplar, perpanjangan masa pinjam mandiri, serta reservasi koleksi populer.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="minimal-card">
+                            <div class="icon-box">
+                                <i class="bi bi-journal-richtext"></i>
+                            </div>
+                            <h3 class="card-title-minimal">Akses E-Resources</h3>
+                            <p class="card-text-minimal">
+                                Akses jurnal internasional terindeks (IEEE, ScienceDirect, Springer) dan repositori tugas akhir/tesis secara daring.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="minimal-card">
+                            <div class="icon-box">
+                                <i class="bi bi-person-vcard"></i>
+                            </div>
+                            <h3 class="card-title-minimal">Aktivasi &amp; Bebas Pustaka</h3>
+                            <p class="card-text-minimal">
+                                Pendaftaran anggota baru, penerbitan kartu anggota digital, dan pengurusan surat keterangan bebas pustaka.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="minimal-card">
+                            <div class="icon-box">
+                                <i class="bi bi-mortarboard"></i>
+                            </div>
+                            <h3 class="card-title-minimal">Klinik Literasi &amp; Sitasi</h3>
+                            <p class="card-text-minimal">
+                                Pendampingan penelusuran referensi ilmiah, pelatihan Mendeley/Zotero, serta pengecekan kemiripan karya ilmiah.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================
+             D. DAFTAR ANGGOTA (Pengunjung) / PENGELOLAAN DATA ANGGOTA (Admin)
+             ================================================================== -->
+        <section id="daftar-anggota" class="section-block section-bg-white">
+            <div class="container">
+                <div class="row justify-content-between align-items-end mb-4">
+                    <div class="col-lg-7">
+                        <div class="section-tag">
+                            <span class="section-tag-dot"></span>
+                            <span id="memberSectionTagText">Direktori Anggota Perpustakaan</span>
+                        </div>
+                        <h2 class="section-heading" id="memberSectionHeading">Daftar Anggota</h2>
+                        <p class="section-subheading mb-0" id="memberSectionSubheading">
+                            Lihat daftar anggota perpustakaan yang telah terdaftar atau cari anggota berdasarkan nama maupun NIM/NIP.
+                        </p>
+                    </div>
+                    <div class="col-lg-5 text-lg-end mt-3 mt-lg-0 d-flex flex-wrap gap-2 justify-content-lg-end">
+                        <!-- Hanya muncul untuk Admin / Petugas -->
+                        <button type="button" class="btn btn-neutral-flat d-none" id="btnRestoreSample" title="Muat ulang data sampel bawaan">
+                            <i class="bi bi-database-add me-1"></i>Muat Data Contoh
+                        </button>
+                        <a href="pendaftaran.html" class="btn btn-primary-flat">
+                            <i class="bi bi-plus-lg me-1"></i>Pendaftaran Anggota Baru
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Notifikasi Aksi Pengelolaan (Edit / Hapus / Login) -->
+                <div id="manageAlertContainer" class="mb-3" aria-live="polite"></div>
+
+                <!-- Ringkasan Cepat Kategori Anggota -->
+                <div class="row g-3 mb-4">
+                    <div class="col-6 col-md-3">
+                        <div class="minimal-card py-3 px-3">
+                            <div class="text-muted small">Total Terdaftar</div>
+                            <div class="fs-4 fw-bold" style="color: var(--primary-blue);" id="countAllMembers">0</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="minimal-card py-3 px-3">
+                            <div class="text-muted small">Mahasiswa</div>
+                            <div class="fs-4 fw-bold" id="countMahasiswa">0</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="minimal-card py-3 px-3">
+                            <div class="text-muted small">Dosen</div>
+                            <div class="fs-4 fw-bold" id="countDosen">0</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="minimal-card py-3 px-3">
+                            <div class="text-muted small">Tenaga Kependidikan</div>
+                            <div class="fs-4 fw-bold" id="countTendik">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabel & Toolbar Pencarian -->
+                <div class="table-panel">
+                    <div class="table-toolbar">
+                        <div class="row g-3 align-items-center">
+                            <!-- Pencarian Nama atau NIM/NIP -->
+                            <div class="col-md-6 col-lg-5">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white border-end-0 text-secondary">
+                                        <i class="bi bi-search"></i>
+                                    </span>
+                                    <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Cari nama anggota atau NIM/NIP...">
+                                </div>
+                            </div>
+
+                            <!-- Filter Jenis Keanggotaan -->
+                            <div class="col-md-4 col-lg-3">
+                                <select id="filterJenisSelect" class="form-select" aria-label="Filter Jenis Keanggotaan">
+                                    <option value="ALL">Semua Jenis Keanggotaan</option>
+                                    <option value="Mahasiswa">Mahasiswa</option>
+                                    <option value="Dosen">Dosen</option>
+                                    <option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
+                                </select>
+                            </div>
+
+                            <!-- Keterangan Jumlah Data Ditampilkan -->
+                            <div class="col-md-2 col-lg-4 text-md-end">
+                                <span class="small text-secondary" id="tableCountInfo">Menampilkan 0 data</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-minimal">
+                            <thead id="memberTableHead">
+                                <!-- Diisi secara dinamis oleh script.js sesuai mode Pengunjung vs Admin Petugas -->
+                            </thead>
+                            <tbody id="memberTableBody">
+                                <!-- Diisi secara dinamis oleh script.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================
+         A.5 FOOTER (Kontak & Jam Layanan)
+         ====================================================================== -->
+    <footer class="footer-minimal">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-logo-box">
+                        <img src="Logo_1.png" alt="Logo Perpustakaan ITS" style="height: 36px;">
+                    </div>
+                    <h4 class="h6 fw-bold text-white mb-2">LibraryReg — UPT Perpustakaan ITS</h4>
+                    <p class="small text-light opacity-75 mb-0">
+                        Aplikasi Pendaftaran dan Pengelolaan Anggota Perpustakaan berbasis web untuk mendukung layanan sirkulasi akademik yang cepat, akurat, dan bebas kertas.
+                    </p>
+                </div>
+
+                <div class="col-sm-6 col-lg-2">
+                    <h5 class="footer-heading">Menu Navigasi</h5>
+                    <ul class="footer-list">
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#tentang">Tentang Perpustakaan</a></li>
+                        <li><a href="#layanan">Layanan</a></li>
+                        <li><a href="#daftar-anggota">Daftar Anggota</a></li>
+                        <li><a href="pendaftaran.html">Pendaftaran Anggota</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <h5 class="footer-heading">Jam Layanan Perpustakaan</h5>
+                    <ul class="footer-list">
+                        <li><strong>Senin – Kamis:</strong> 07.30 – 19.00 WIB</li>
+                        <li><strong>Jumat:</strong> 07.30 – 16.30 WIB</li>
+                        <li><strong>Sabtu:</strong> 08.00 – 14.00 WIB</li>
+                        <li><strong>Minggu &amp; Hari Libur:</strong> Tutup</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3">
+                    <h5 class="footer-heading">Kontak &amp; Lokasi</h5>
+                    <ul class="footer-list">
+                        <li><i class="bi bi-geo-alt me-2 text-info"></i>Gedung Perpustakaan ITS, Kampus ITS Sukolilo, Surabaya 60111</li>
+                        <li><i class="bi bi-telephone me-2 text-info"></i>(031) 5945765 / Ext. 1226</li>
+                        <li><i class="bi bi-envelope me-2 text-info"></i>library@its.ac.id</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <span>&copy; 2026 LibraryReg — UPT Perpustakaan ITS. Evaluasi Tengah Semester Pemrograman Web.</span>
+                <span>Penyimpanan Front-End: <code>JavaScript &amp; localStorage</code></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================================================================
+         MODALS: DETAIL ANGGOTA, EDIT ANGGOTA, KONFIRMASI HAPUS, LOGIN PETUGAS
+         ====================================================================== -->
+
+    <!-- 1. Modal Detail Anggota & Kartu Digital (Admin) -->
+    <div class="modal fade" id="modalDetailAnggota" tabindex="-1" aria-labelledby="modalDetailLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="modalDetailLabel">
+                        <i class="bi bi-person-vcard me-2 text-primary"></i>Detail &amp; Kartu Anggota
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="digital-id-card">
+                        <div class="digital-id-header">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="Logo_1.png" alt="Logo Perpustakaan ITS" style="height: 34px;">
+                                <div>
+                                    <div class="fw-bold small">PERPUSTAKAAN ITS</div>
+                                    <div class="text-muted" style="font-size: 0.75rem;" id="detailIdCardNumber">ID: LIB-000</div>
+                                </div>
+                            </div>
+                            <span id="detailBadgeJenis" class="badge-role badge-mahasiswa">Mahasiswa</span>
+                        </div>
+                        <div class="digital-id-grid">
+                            <div class="digital-id-label">Nama Lengkap</div>
+                            <div class="digital-id-value" id="detailNama">-</div>
+
+                            <div class="digital-id-label">NIM / NIP</div>
+                            <div class="digital-id-value" id="detailNimNip">-</div>
+
+                            <div class="digital-id-label">Prodi / Unit</div>
+                            <div class="digital-id-value" id="detailProdi">-</div>
+
+                            <div class="digital-id-label">Email</div>
+                            <div class="digital-id-value" id="detailEmail">-</div>
+
+                            <div class="digital-id-label">No. Telepon</div>
+                            <div class="digital-id-value" id="detailTelepon">-</div>
+
+                            <div class="digital-id-label">Alamat</div>
+                            <div class="digital-id-value" id="detailAlamat">-</div>
+
+                            <div class="digital-id-label">Tgl. Daftar</div>
+                            <div class="digital-id-value" id="detailTanggal">-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top">
+                    <button type="button" class="btn btn-neutral-flat" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary-flat" id="btnEditFromDetail">
+                        <i class="bi bi-pencil-square me-1"></i>Edit Data Ini
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Modal Edit Data Anggota (Admin) -->
+    <div class="modal fade" id="modalEditAnggota" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="modalEditLabel">
+                        <i class="bi bi-pencil-square me-2 text-primary"></i>Edit Data Anggota Perpustakaan
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <form id="editMemberForm" novalidate>
+                    <div class="modal-body p-4">
+                        <input type="hidden" id="editMemberId">
+                        <div id="editModalAlert" class="mb-3"></div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="editNama" class="form-label">Nama Lengkap<span class="required-star">*</span></label>
+                                <input type="text" class="form-control" id="editNama" required>
+                                <div class="invalid-feedback" id="errEditNama">Nama lengkap wajib diisi.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editNimNip" class="form-label">NIM / NIP<span class="required-star">*</span></label>
+                                <input type="text" class="form-control" id="editNimNip" required>
+                                <div class="invalid-feedback" id="errEditNimNip">NIM/NIP wajib diisi dan harus unik.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editJenis" class="form-label">Jenis Keanggotaan<span class="required-star">*</span></label>
+                                <select class="form-select" id="editJenis" required>
+                                    <option value="">-- Pilih Jenis Keanggotaan --</option>
+                                    <option value="Mahasiswa">Mahasiswa</option>
+                                    <option value="Dosen">Dosen</option>
+                                    <option value="Tenaga Kependidikan">Tenaga Kependidikan</option>
+                                </select>
+                                <div class="invalid-feedback" id="errEditJenis">Pilih jenis keanggotaan.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editProdi" class="form-label">Program Studi / Unit<span class="required-star">*</span></label>
+                                <input type="text" class="form-control" id="editProdi" required>
+                                <div class="invalid-feedback" id="errEditProdi">Program studi/unit wajib diisi.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editTelepon" class="form-label">Nomor Telepon<span class="required-star">*</span></label>
+                                <input type="tel" class="form-control" id="editTelepon" required>
+                                <div class="invalid-feedback" id="errEditTelepon">Nomor telepon wajib diisi (8–15 digit).</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editEmail" class="form-label">Alamat Email<span class="required-star">*</span></label>
+                                <input type="email" class="form-control" id="editEmail" required>
+                                <div class="invalid-feedback" id="errEditEmail">Format email tidak valid.</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="editAlamat" class="form-label">Alamat Lengkap<span class="required-star">*</span></label>
+                                <textarea class="form-control" id="editAlamat" rows="2" required></textarea>
+                                <div class="invalid-feedback" id="errEditAlamat">Alamat lengkap wajib diisi.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-top">
+                        <button type="button" class="btn btn-neutral-flat" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary-flat">
+                            <i class="bi bi-save me-1"></i>Simpan Perubahan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Modal Konfirmasi Hapus Anggota (Admin) -->
+    <div class="modal fade" id="modalHapusAnggota" tabindex="-1" aria-labelledby="modalHapusLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold text-danger" id="modalHapusLabel">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>Konfirmasi Hapus Data Anggota
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="mb-2">Apakah Anda yakin ingin menghapus data anggota berikut dari penyimpanan?</p>
+                    <div class="p-3 rounded-2" style="background-color: var(--danger-bg); border: 1px solid var(--danger-border);">
+                        <div class="fw-bold text-dark" id="deleteTargetNama">-</div>
+                        <div class="small text-secondary" id="deleteTargetNimNip">NIM/NIP: -</div>
+                    </div>
+                    <p class="small text-muted mt-3 mb-0">
+                        Tindakan ini akan memperbarui daftar anggota pada <code>localStorage</code> secara permanen.
+                    </p>
+                </div>
+                <div class="modal-footer border-top">
+                    <button type="button" class="btn btn-neutral-flat" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger fw-semibold px-3" id="btnConfirmDelete">
+                        <i class="bi bi-trash3 me-1"></i>Ya, Hapus Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Modal Simulasi Login Petugas -->
+    <div class="modal fade" id="modalLoginPetugas" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="modalLoginLabel">
+                        <i class="bi bi-shield-lock-fill me-2 text-primary"></i>Login Petugas Perpustakaan
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <form id="staffLoginForm" novalidate>
+                    <div class="modal-body p-4">
+                        <div class="alert-flat alert-flat-info mb-3">
+                            <div>
+                                <div class="fw-bold small">Simulasi Antarmuka Petugas (Admin)</div>
+                                <div class="small">Gunakan akun demo: <code>petugas@its.ac.id</code> / Sandi: <code>admin123</code></div>
+                            </div>
+                        </div>
+                        <div id="loginAlertContainer" class="mb-3"></div>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email / ID Petugas</label>
+                            <input type="text" class="form-control" id="loginEmail" value="petugas@its.ac.id" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="loginPassword" class="form-label">Kata Sandi</label>
+                            <input type="password" class="form-control" id="loginPassword" value="admin123" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-top">
+                        <button type="button" class="btn btn-neutral-flat" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary-flat">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>Masuk sebagai Petugas
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Application Logic -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+/* ==========================================================================
+   LibraryReg — Perpustakaan ITS
+   Minimalist Flat UI Stylesheet (Blue & White Palette, Zero Gradients)
+   ========================================================================== */
+
+:root {
+    /* Primary Blue & White Palette (Inspired by ITS Brand Identity) */
+    --primary-blue: #0060B6;
+    --primary-blue-hover: #004B8F;
+    --primary-blue-dark: #003566;
+    --accent-blue-soft: #EBF4FF;
+    --accent-blue-border: #C2DDFB;
+    --accent-gold: #E5A000; /* Subtle detail accent from Perpustakaan ITS logo */
+    --accent-gold-soft: #FEF9E7;
+
+    /* Neutral & Surface Colors */
+    --bg-white: #FFFFFF;
+    --bg-surface: #F7FAFC;
+    --bg-surface-alt: #F0F5FA;
+    --border-color: #E2E8F0;
+    --border-strong: #CBD5E1;
+
+    /* Typography Colors */
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+
+    /* Semantic Colors (Flat) */
+    --success-bg: #ECFDF5;
+    --success-text: #047857;
+    --success-border: #A7F3D0;
+
+    --danger-bg: #FEF2F2;
+    --danger-text: #B91C1C;
+    --danger-border: #FECACA;
+
+    --warning-bg: #FFFBEB;
+    --warning-text: #B45309;
+    --warning-border: #FDE68A;
+
+    /* Layout & Radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --shadow-subtle: 0 1px 3px rgba(15, 23, 42, 0.04);
+    --shadow-card: 0 4px 12px rgba(0, 96, 182, 0.05);
+}
+
+/* Base Reset & Typography */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-white);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
+.navbar-library {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.navbar-brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.brand-logo {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-divider {
+    width: 1px;
+    height: 28px;
+    background-color: var(--border-strong);
+}
+
+.brand-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.brand-subtitle {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+}
+
+.navbar-library .nav-link {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.92rem;
+    padding: 0.5rem 0.9rem !important;
+    border-radius: var(--radius-sm);
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.navbar-library .nav-link:hover {
+    color: var(--primary-blue);
+    background-color: var(--bg-surface);
+}
+
+.navbar-library .nav-link.active {
+    color: var(--primary-blue);
+    background-color: var(--accent-blue-soft);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Buttons (Flat, Zero Gradient)
+   ========================================================================== */
+.btn-primary-flat {
+    background-color: var(--primary-blue);
+    color: var(--bg-white);
+    border: 1px solid var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary-flat:hover,
+.btn-primary-flat:focus {
+    background-color: var(--primary-blue-hover);
+    border-color: var(--primary-blue-hover);
+    color: var(--bg-white);
+}
+
+.btn-outline-flat {
+    background-color: var(--bg-white);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-outline-flat:hover,
+.btn-outline-flat:focus {
+    background-color: var(--accent-blue-soft);
+    color: var(--primary-blue-hover);
+}
+
+.btn-neutral-flat {
+    background-color: var(--bg-surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.55rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-neutral-flat:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+    background-color: var(--bg-white);
+    padding: 4.5rem 0 4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--accent-blue-soft);
+    color: var(--primary-blue);
+    border: 1px solid var(--accent-blue-border);
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}
+
+.section-tag-dot {
+    width: 7px;
+    height: 7px;
+    background-color: var(--primary-blue);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 3.6vw, 2.85rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.18;
+    margin-bottom: 1.25rem;
+}
+
+.hero-title .text-accent-blue {
+    color: var(--primary-blue);
+}
+
+.hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin-bottom: 2rem;
+}
+
+/* Hero Minimalist Card Preview */
+.hero-preview-panel {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+}
+
+.member-card-preview {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-strong);
+    border-top: 4px solid var(--primary-blue);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+}
+
+.hero-checklist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.hero-checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.hero-checklist-item i {
+    color: var(--primary-blue);
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   Statistics Section
+   ========================================================================== */
+.stats-bar {
+    background-color: var(--primary-blue);
+    color: var(--bg-white);
+    padding: 2.75rem 0;
+}
+
+.stat-item {
+    padding: 0.75rem 1rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.stat-number {
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+    color: var(--bg-white);
+}
+
+.stat-label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #DCEBFA;
+    margin: 0;
+}
+
+/* ==========================================================================
+   Section Layout & Cards
+   ========================================================================== */
+.section-block {
+    padding: 4.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-bg-surface {
+    background-color: var(--bg-surface);
+}
+
+.section-bg-white {
+    background-color: var(--bg-white);
+}
+
+.section-heading {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+    margin-bottom: 0.65rem;
+}
+
+.section-subheading {
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    max-width: 620px;
+}
+
+.minimal-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.65rem;
+    height: 100%;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.minimal-card:hover {
+    border-color: var(--primary-blue);
+}
+
+.minimal-card-accent-top {
+    border-top: 3px solid var(--primary-blue);
+}
+
+.icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-sm);
+    background-color: var(--accent-blue-soft);
+    color: var(--primary-blue);
+    border: 1px solid var(--accent-blue-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1.15rem;
+}
+
+.card-title-minimal {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.card-text-minimal {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+/* Facility List Items */
+.facility-pill {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.15rem 1.25rem;
+    height: 100%;
+}
+
+.facility-pill-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    background-color: var(--accent-blue-soft);
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Form Elements (Registration & Modals)
+   ========================================================================== */
+.form-panel {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--primary-blue);
+    border-radius: var(--radius-md);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-subtle);
+}
+
+.form-label {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+}
+
+.required-star {
+    color: var(--danger-text);
+    margin-left: 2px;
+}
+
+.form-control,
+.form-select {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.85rem;
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 96, 182, 0.12);
+    outline: none;
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: var(--danger-text);
+}
+
+.invalid-feedback {
+    font-size: 0.8rem;
+    color: var(--danger-text);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Member Management Table & Controls
+   ========================================================================== */
+.table-panel {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.table-toolbar {
+    padding: 1.25rem 1.5rem;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-minimal {
+    margin-bottom: 0;
+}
+
+.table-minimal thead th {
+    background-color: var(--bg-surface-alt);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.table-minimal tbody td {
+    padding: 1rem 1.25rem;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-minimal tbody tr:hover {
+    background-color: var(--bg-surface);
+}
+
+/* Membership Badges */
+.badge-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    border-radius: 50px;
+}
+
+.badge-mahasiswa {
+    background-color: var(--accent-blue-soft);
+    color: var(--primary-blue);
+    border: 1px solid var(--accent-blue-border);
+}
+
+.badge-dosen {
+    background-color: var(--accent-gold-soft);
+    color: #9A6700;
+    border: 1px solid #F6D87A;
+}
+
+.badge-tendik {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success-border);
+}
+
+/* Action Buttons in Table */
+.btn-action {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-white);
+    color: var(--text-secondary);
+    transition: all 0.15s ease;
+}
+
+.btn-action:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    background-color: var(--accent-blue-soft);
+}
+
+.btn-action-danger:hover {
+    border-color: var(--danger-text);
+    color: var(--danger-text);
+    background-color: var(--danger-bg);
+}
+
+/* ==========================================================================
+   Alerts / Notification Banner
+   ========================================================================== */
+.alert-flat {
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1.15rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.alert-flat-success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success-border);
+}
+
+.alert-flat-danger {
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+    border: 1px solid var(--danger-border);
+}
+
+.alert-flat-info {
+    background-color: var(--accent-blue-soft);
+    color: var(--primary-blue-dark);
+    border: 1px solid var(--accent-blue-border);
+}
+
+/* ==========================================================================
+   Digital Member Card (Inside Detail Modal)
+   ========================================================================== */
+.digital-id-card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-strong);
+    border-top: 5px solid var(--primary-blue);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+}
+
+.digital-id-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.digital-id-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    row-gap: 0.55rem;
+    font-size: 0.88rem;
+}
+
+.digital-id-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.digital-id-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer-minimal {
+    background-color: var(--primary-blue-dark);
+    color: var(--bg-white);
+    padding: 3.5rem 0 2rem;
+}
+
+.footer-logo-box {
+    background-color: var(--bg-white);
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.85rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+}
+
+.footer-heading {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #93C5FD;
+    margin-bottom: 1rem;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    color: #E2E8F0;
+}
+
+.footer-list a {
+    color: #E2E8F0;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.footer-list a:hover {
+    color: #93C5FD;
+}
+
+.footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 0.84rem;
+    color: #CBD5E1;
+}
+
+/* Staff Status Pill in Navbar */
+.staff-badge-active {
+    background-color: var(--accent-blue-soft);
+    color: var(--primary-blue);
+    border: 1px solid var(--accent-blue-border);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+}
+
+@media (max-width: 767.98px) {
+    .hero-section {
+        padding: 3rem 0;
+    }
+    .form-panel {
+        padding: 1.5rem;
+    }
+    .stat-item {
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 1rem;
+        margin-bottom: 0.5rem;
+    }
+}
